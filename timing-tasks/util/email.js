@@ -19,7 +19,7 @@ async function sendEmail(content) {
     await transporter.sendMail({
       from: config.EMAIL_SENDER,
       to: config.EMAIL_RECEIVER,
-      subject: "【通知】掘金签到",
+      subject: "【通知】签到服务",
       html: content,
     });
   } catch (error) {

@@ -4,6 +4,13 @@ const config = require("../util/config");
 const userURL = "https://api.juejin.cn";
 const mimingURL = "https://juejin-game.bytedance.com";
 
+const headers = {
+  origin: "https://juejin.cn",
+  referer: "https://juejin.cn/",
+  "sec-fetch-dest": "empty",
+  "sec-fetch-mode": "cors",
+};
+
 const user = {
   /**
    * 用户信息
@@ -13,6 +20,7 @@ const user = {
       url: `${userURL}/user_api/v1/user/get`,
       headers: {
         cookie: JUEJIN_COOKIE,
+        ...headers,
       },
     });
   },
@@ -24,6 +32,7 @@ const user = {
       url: `${userURL}/growth_api/v1/check_in`,
       headers: {
         cookie: JUEJIN_COOKIE,
+        ...headers,
       },
     });
   },
@@ -35,6 +44,7 @@ const user = {
       url: `${userURL}/growth_api/v1/lottery/draw`,
       headers: {
         cookie: JUEJIN_COOKIE,
+        ...headers,
       },
     });
   },
@@ -47,6 +57,7 @@ const user = {
       data: params,
       headers: {
         cookie: JUEJIN_COOKIE,
+        ...headers,
       },
     });
   },
@@ -62,6 +73,7 @@ const miming = {
       data: params,
       headers: {
         authorization: config.JUEJIN_TOKEN,
+        ...headers,
       },
     });
   },
@@ -73,6 +85,7 @@ const miming = {
       url: `${mimingURL}/game/sea-gold/home/info?uid=${uid}&time=${time}`,
       headers: {
         authorization: config.JUEJIN_TOKEN,
+        ...headers,
       },
     });
   },
@@ -85,6 +98,7 @@ const miming = {
       data: params,
       headers: {
         authorization: config.JUEJIN_TOKEN,
+        ...headers,
       },
     });
   },
@@ -97,6 +111,7 @@ const miming = {
       data: params,
       headers: {
         authorization: config.JUEJIN_TOKEN,
+        ...headers,
       },
     });
   },
@@ -111,6 +126,7 @@ const miming = {
         authorization: config.JUEJIN_TOKEN,
         "Content-Type": "application/json;charset=UTF-8",
         "x-tt-gameid": xGameId,
+        ...headers,
       },
     });
   },
@@ -124,6 +140,7 @@ const miming = {
       headers: {
         authorization: config.JUEJIN_TOKEN,
         "Content-Type": "application/json;charset=UTF-8",
+        ...headers,
       },
     });
   },
@@ -135,6 +152,7 @@ const miming = {
       url: `${mimingURL}/game/sea-gold/user/record?uid=${uid}&time=${time}`,
       headers: {
         authorization: config.JUEJIN_TOKEN,
+        ...headers,
       },
     });
   },

@@ -23,7 +23,7 @@ ${message.replace(/; /g, /\n/)}`);
     }
   } catch (error) {
     const html = `
-<h2>签到失败</h2>
+<h2>签到失败：掘金</h2>
 <span>${new Date().toLocaleString()}</span>
 
 ${JSON.stringify(error)}
