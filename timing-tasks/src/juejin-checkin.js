@@ -7,7 +7,8 @@ const { sendEmail } = require("../util/email");
 (async () => {
   try {
     const { sum_point } = await juejinApi.checkIn();
-    const { lottery_name, lottery_type } = await juejinApi.drawLottery();
+    const { lottery_name, lottery_type } =
+      await juejinApi.drawLottery();
     const { dip_value, total_value } = await juejinApi.dipLucky({
       lottery_history_id: "7052109119238438925",
     });

@@ -4,13 +4,18 @@ const { PassThrough, pipeline, Transform } = require("stream");
 const { format } = require("util");
 
 function formatMsg(message, options) {
-  return options.length !== 0 ? format(message, options) : format(message);
+  return options.length !== 0
+    ? format(message, options)
+    : format(message);
 }
 
 function baseTransform(tag) {
   return new Transform({
     transform(c, e, cb) {
-      cb(undefined, `[${tag}] [${new Date().toLocaleString()}] ${c}\n`);
+      cb(
+        undefined,
+        `[${tag}] [${new Date().toLocaleString()}] ${c}\n`
+      );
     },
   });
 }
@@ -82,6 +87,9 @@ class Logger {
         warn.write(formatMsg(message, options));
       },
       error(message, ...options) {
+        if (typeof message === "object") {
+          message = JSON.stringify(message);
+        }
         error.write(formatMsg(message, options));
       },
     };

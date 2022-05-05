@@ -4,12 +4,12 @@ const { SMZDM_COOKIE } = require("../util/config");
 const baseURL = "https://zhiyou.smzdm.com";
 
 const headers = {
-  accept: "*/*",
+  "accept": "*/*",
   "accept-encoding": "gzip, deflate, br",
   "accept-language": "zh-CN,zh;q=0.9",
-  connection: "keep-alive",
-  host: "zhiyou.smzdm.com",
-  referer: "https://www.smzdm.com/",
+  "connection": "keep-alive",
+  "host": "zhiyou.smzdm.com",
+  "referer": "https://www.smzdm.com/",
   "sec-fetch-dest": "script",
   "sec-fetch-mode": "no-cors",
 };

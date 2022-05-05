@@ -109,7 +109,11 @@ async function playGame() {
     const overParams = {
       isButton: 1,
     };
-    const overData = await juejinApi.overGame(overParams, juejinUid, overTime);
+    const overData = await juejinApi.overGame(
+      overParams,
+      juejinUid,
+      overTime
+    );
     await sleep(3000);
     miningDeepth = overData.deep;
 
@@ -120,7 +124,7 @@ async function playGame() {
       await juejinApi.freshMap({}, juejinUid, mapTime);
     }
   } catch (error) {
-    logger.error(JSON.stringify(error));
+    logger.error(error);
     await sleep(3000);
     // 结束
     const overTime = +new Date().getTime();

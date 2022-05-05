@@ -1,12 +1,12 @@
 const network = require("../util/network");
-const config = require("../util/config");
+const { JUEJIN_COOKIE, JUEJIN_TOKEN } = require("../util/config");
 
 const userURL = "https://api.juejin.cn";
 const mimingURL = "https://juejin-game.bytedance.com";
 
 const headers = {
-  origin: "https://juejin.cn",
-  referer: "https://juejin.cn/",
+  "origin": "https://juejin.cn",
+  "referer": "https://juejin.cn/",
   "sec-fetch-dest": "empty",
   "sec-fetch-mode": "cors",
 };
@@ -72,7 +72,7 @@ const miming = {
       url: `${mimingURL}/game/sea-gold/game/start?uid=${uid}&time=${time}`,
       data: params,
       headers: {
-        authorization: config.JUEJIN_TOKEN,
+        authorization: JUEJIN_TOKEN,
         ...headers,
       },
     });
@@ -84,7 +84,7 @@ const miming = {
     return network.get({
       url: `${mimingURL}/game/sea-gold/home/info?uid=${uid}&time=${time}`,
       headers: {
-        authorization: config.JUEJIN_TOKEN,
+        authorization: JUEJIN_TOKEN,
         ...headers,
       },
     });
@@ -97,7 +97,7 @@ const miming = {
       url: `${mimingURL}/game/sea-gold/game/over?uid=${uid}&time=${time}`,
       data: params,
       headers: {
-        authorization: config.JUEJIN_TOKEN,
+        authorization: JUEJIN_TOKEN,
         ...headers,
       },
     });
@@ -110,7 +110,7 @@ const miming = {
       url: `${mimingURL}/game/sea-gold/game/fresh_map?uid=${uid}&time=${time}`,
       data: params,
       headers: {
-        authorization: config.JUEJIN_TOKEN,
+        authorization: JUEJIN_TOKEN,
         ...headers,
       },
     });
@@ -123,7 +123,7 @@ const miming = {
       url: `${mimingURL}/game/sea-gold/game/command?uid=${uid}&time=${time}`,
       data: params,
       headers: {
-        authorization: config.JUEJIN_TOKEN,
+        "authorization": JUEJIN_TOKEN,
         "Content-Type": "application/json;charset=UTF-8",
         "x-tt-gameid": xGameId,
         ...headers,
@@ -138,7 +138,7 @@ const miming = {
       url: `${mimingURL}/game/sea-gold/game/pico?uid=${uid}&time=${time}`,
       data: params,
       headers: {
-        authorization: config.JUEJIN_TOKEN,
+        "authorization": JUEJIN_TOKEN,
         "Content-Type": "application/json;charset=UTF-8",
         ...headers,
       },
@@ -151,7 +151,7 @@ const miming = {
     return network.get({
       url: `${mimingURL}/game/sea-gold/user/record?uid=${uid}&time=${time}`,
       headers: {
-        authorization: config.JUEJIN_TOKEN,
+        authorization: JUEJIN_TOKEN,
         ...headers,
       },
     });

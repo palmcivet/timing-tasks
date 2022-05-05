@@ -4,7 +4,7 @@ const defaultConfig = {
   data: {},
   params: {},
   headers: {
-    pragma: "no-cache",
+    "pragma": "no-cache",
     "sec-ch-ua-mobile": "?0",
     "sec-ch-ua":
       '"Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"',
