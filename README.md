@@ -4,6 +4,8 @@
 
 ## raycast-scripts
 
+参考 [script-commands](https://github.com/raycast/script-commands)
+
 ## timing-tasks
 
 - 掘金
