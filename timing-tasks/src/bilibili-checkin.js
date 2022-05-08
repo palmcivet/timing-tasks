@@ -4,50 +4,32 @@ const logger = require("../util/logger");
 const bilibiliApi = require("../api/bilibili");
 const { sendEmail } = require("../util/email");
 
-async function userCheckIn(params) {
-  const { data } = await bilibiliApi.getUser();
-  const { isLogin } = data;
-
-  if (!isLogin) {
-    throw Error("COOKIE 已过期");
-  }
-}
-
-async function liveCheckIn() {
+(async () => {
   try {
+    /* 登录签到 */
+    const { isLogin } = await bilibiliApi.getUser();
+
+    if (!isLogin) {
+      throw Error("COOKIE 已过期");
+    }
+
+    /* 直播签到 */
     await bilibiliApi.getLiveCheckIn();
-  } catch (error) {
-    logger.error(error);
-  }
-}
 
-async function comicCheckIn() {
-  try {
+    /* 漫画签到 */
     await bilibiliApi.getComicCheckIn();
-  } catch (error) {
-    logger.error(error);
-  }
-}
 
-async function watchVideo() {
-  try {
-    const followVideoList = await bilibiliApi.getLatestVideo();
+    /* 观看视频，并分享 */
     const regionRankList = await bilibiliApi.getRegionRankVideo();
 
-    const vid =
+    const { bvid } =
       regionRankList[
-        Number.parseInt(Math.random() * rankList.length)
+        Number.parseInt(Math.random() * regionRankList.length)
       ];
-    await this.videoHeartBeat(vid);
-    await this.videoShare(vid);
-  } catch (error) {}
-}
-
-Promise.all([
-  userCheckIn,
-  liveCheckIn,
-  comicCheckIn,
-  watchVideo,
-]).catch((error) => {
-  logger.error(error);
-});
+    await bilibiliApi.playVideo(bvid);
+    await bilibiliApi.shareVideo(bvid);
+  } catch (error) {
+    console.error(error);
+    logger.error(error);
+  }
+})();

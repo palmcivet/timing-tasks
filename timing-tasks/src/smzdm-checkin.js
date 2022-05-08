@@ -4,17 +4,16 @@ const logger = require("../util/logger");
 const smzdmApi = require("../api/smzdm");
 const { sendEmail } = require("../util/email");
 
-(async () => {
-  try {
-    await smzdmApi.checkIn();
-  } catch (error) {
-    const html = `
-<h2>签到失败：什么值得买</h2>
-<span>${new Date().toLocaleString()}</span>
+// smzdmApi
+//   .getUser()
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((error) => {
+//     console.error(error);
+//   });
 
-${JSON.stringify(error)}
-`;
-    sendEmail(html);
-    logger.error(`签到失败: ${JSON.stringify(error)}`);
-  }
-})();
+smzdmApi.checkIn().catch((error) => {
+  console.error(error);
+  logger.error(`签到失败: ${JSON.stringify(error)}`);
+});

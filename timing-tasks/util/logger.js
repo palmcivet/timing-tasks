@@ -46,11 +46,11 @@ class Logger {
     pipeline(this.loggerEntries.warn, this.output, () => {});
     pipeline(this.loggerEntries.error, this.output, () => {});
 
-    process.on("uncaughtException", (err) => {
-      this.error("Uncaught Exception", err);
+    process.on("uncaughtException", (error) => {
+      this.error("Uncaught Exception", error);
     });
-    process.on("unhandledRejection", (reason) => {
-      this.error("Uncaught Rejection", err);
+    process.on("unhandledRejection", (error) => {
+      this.error("Uncaught Rejection", error);
     });
   }
 

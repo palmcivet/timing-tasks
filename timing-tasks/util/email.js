@@ -15,12 +15,20 @@ const transporter = nodemailer.createTransport({
 });
 
 async function sendEmail(content) {
+  let html = content;
+  if (typeof content === "object") {
+    html = `
+<h2>签到失败：${content.taskName}</h2>
+<span>${new Date().toLocaleString()}</span>
+`;
+  }
+
   try {
     await transporter.sendMail({
       from: config.EMAIL_SENDER,
       to: config.EMAIL_RECEIVER,
       subject: "【通知】签到服务",
-      html: content,
+      html,
     });
   } catch (error) {
     logger.error(`邮件发送失败: ${error}`);

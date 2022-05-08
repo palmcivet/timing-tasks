@@ -4,14 +4,14 @@ const { SMZDM_COOKIE } = require("../util/config");
 const baseURL = "https://zhiyou.smzdm.com";
 
 const headers = {
-  "accept": "*/*",
+  "accept":
+    "text/javascript, application/javascript, application/ecmascript, application/x-ecmascript, */*; q=0.01",
   "accept-encoding": "gzip, deflate, br",
-  "accept-language": "zh-CN,zh;q=0.9",
-  "connection": "keep-alive",
+  "accept-language":
+    "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
   "host": "zhiyou.smzdm.com",
-  "referer": "https://www.smzdm.com/",
+  "referrer": "https://zhiyou.smzdm.com/user/",
   "sec-fetch-dest": "script",
-  "sec-fetch-mode": "no-cors",
 };
 
 module.exports = {
@@ -32,7 +32,7 @@ module.exports = {
    */
   checkIn() {
     return network.get({
-      url: `${baseURL}/user/checkin/jsonp_checkin`,
+      url: `${baseURL}/user/checkin/jsonp_checkin?callback=jQuery112409568846254764496_${new Date().getTime()}&_=${new Date().getTime()}`,
       headers: {
         cookie: SMZDM_COOKIE,
         ...headers,

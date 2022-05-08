@@ -39,13 +39,14 @@ module.exports = {
    * 漫画签到
    */
   getComicCheckIn() {
-    return network.get({
+    return network.post({
       url: "https://manga.bilibili.com/twirp/activity.v1.Activity/ClockIn",
       headers: {
-        cookie: BILIBILI_COOKIE,
         ...headers,
+        "content-type": "application/x-www-form-urlencoded",
       },
       params: {
+        uid: getCookie(BILIBILI_COOKIE, "SESSDATA"),
         platform: "ios",
       },
     });
@@ -88,29 +89,31 @@ module.exports = {
     });
   },
 
-  playVideo(vid) {
+  playVideo(bvid) {
     return network.post({
       url: "https://api.bilibili.com/x/click-interface/web/heartbeat",
       headers: {
-        cookie: BILIBILI_COOKIE,
+        "cookie": BILIBILI_COOKIE,
         ...headers,
+        "content-type": "application/x-www-form-urlencoded",
       },
       params: {
-        vid,
+        bvid,
         csrf: getCookie(BILIBILI_COOKIE, "bili_jct"),
       },
     });
   },
 
-  shareVideo(vid) {
+  shareVideo(bvid) {
     return network.post({
       url: "https://api.bilibili.com/x/web-interface/share/add",
       headers: {
-        cookie: BILIBILI_COOKIE,
+        "cookie": BILIBILI_COOKIE,
         ...headers,
+        "content-type": "application/x-www-form-urlencoded",
       },
       params: {
-        vid,
+        bvid,
         csrf: getCookie(BILIBILI_COOKIE, "bili_jct"),
       },
     });
