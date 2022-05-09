@@ -14,24 +14,40 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-async function sendEmail(content) {
-  let html = content;
-  if (typeof content === "object") {
-    html = `
-<h2>签到失败：${content.taskName}</h2>
-<span>${new Date().toLocaleString()}</span>
-`;
+/**
+ * 错误模板
+ * @param {String} params.taskName
+ * @param {Object} params.error
+ */
+function errorTemplate(params) {
+  return `
+<style>
+  pre {
+    background-color: #f8f8f8;
+    padding: 10px;
+    font-size: 15px;
+    overflow-x: auto;
   }
+</style>
+<h2>执行失败：${params.taskName}</h2>
+<p>执行时间：${new Date().toLocaleString()}</p>
+<p>错误原因：</p>
+<pre>${JSON.stringify(params.error)}</pre>`;
+}
+
+async function sendEmail(content) {
+  const html =
+    typeof content === "object" ? errorTemplate(content) : content;
 
   try {
     await transporter.sendMail({
       from: config.EMAIL_SENDER,
       to: config.EMAIL_RECEIVER,
-      subject: "【通知】签到服务",
+      subject: content.subject ?? "【通知】签到服务",
       html,
     });
   } catch (error) {
-    logger.error(`邮件发送失败: ${error}`);
+    logger.error(error);
   }
 }
 

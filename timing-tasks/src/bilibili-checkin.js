@@ -29,7 +29,10 @@ const { sendEmail } = require("../util/email");
     await bilibiliApi.playVideo(bvid);
     await bilibiliApi.shareVideo(bvid);
   } catch (error) {
-    console.error(error);
+    sendEmail({
+      taskName: "哔哩哔哩签到",
+      error,
+    });
     logger.error(error);
   }
 })();

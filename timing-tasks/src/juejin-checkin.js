@@ -17,19 +17,18 @@ const { sendEmail } = require("../util/email");
     logger.info(message);
 
     if (![1, 2].includes(lottery_type)) {
-      sendEmail(`
-<h2>抽奖成功</h2>
-<span>${new Date().toLocaleString()}</span>
-${message.replace(/; /g, /\n/)}`);
+      sendEmail(
+        `<h2>抽奖成功</h2><span>${new Date().toLocaleString()}</span>${message.replace(
+          /; /g,
+          /\n/
+        )}`
+      );
     }
   } catch (error) {
-    const html = `
-<h2>签到失败：掘金</h2>
-<span>${new Date().toLocaleString()}</span>
-
-${JSON.stringify(error)}
-`;
-    sendEmail(html);
-    logger.error(`签到失败: ${JSON.stringify(error)}`);
+    sendEmail({
+      taskName: "掘金签到",
+      error,
+    });
+    logger.error(error);
   }
 })();
