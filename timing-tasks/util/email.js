@@ -27,12 +27,17 @@ function errorTemplate(params) {
     padding: 10px;
     font-size: 15px;
     overflow-x: auto;
+    white-space: pre-wrap;
   }
 </style>
 <h2>执行失败：${params.taskName}</h2>
 <p>执行时间：${new Date().toLocaleString()}</p>
 <p>错误原因：</p>
-<pre>${JSON.stringify(params.error)}</pre>`;
+<pre>${
+    typeof params.error === "object"
+      ? JSON.stringify(params.error)
+      : params.error
+  }</pre>`;
 }
 
 async function sendEmail(content) {
@@ -43,7 +48,7 @@ async function sendEmail(content) {
     await transporter.sendMail({
       from: config.EMAIL_SENDER,
       to: config.EMAIL_RECEIVER,
-      subject: content.subject ?? "【通知】签到服务",
+      subject: content.subject || "【通知】签到服务",
       html,
     });
   } catch (error) {

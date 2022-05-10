@@ -146,7 +146,7 @@ if (!(config.JUEJIN_COOKIE && config.JUEJIN_TOKEN)) {
   // TODO 自动更新 COOKIE
   logger.warn("获取不到 COOKIE 和 TOKEN，请检查设置");
 } else {
-  getInfo().then(async (userInfo) => {
+  getInfo().then(async ({ userInfo }) => {
     const { todayDiamond, todayLimitDiamond } = userInfo;
     if (todayDiamond < todayLimitDiamond) {
       await playGame();
