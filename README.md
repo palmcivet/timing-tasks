@@ -1,12 +1,4 @@
-# Cloud Center
-
-## n8n-config
-
-## script-commands
-
-参考 [script-commands](https://github.com/raycast/script-commands)
-
-## timing-tasks
+# timing tasks
 
 - 掘金
     - 签到
@@ -21,7 +13,7 @@
 - 网易云音乐签到
 - IT 之家签到
 
-### TODO
+## TODO
 
 - [x] 邮件告警
 - [ ] 自动刷新 Cookie
