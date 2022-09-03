@@ -99,4 +99,4 @@ class Logger {
 const logger = new Logger();
 logger.initialize(join(__dirname, "..", "log"));
 
-module.exports = logger.createLoggerFor("juejin");
+module.exports = logger.createLoggerFor("TASK");

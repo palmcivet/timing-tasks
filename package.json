@@ -1,9 +1,17 @@
 {
-	"dependencies": {
-		"axios": "^0.27.2",
-		"dotenv": "^16.0.0",
-		"jsonwebtoken": "^8.5.1",
-		"nodemailer": "^6.7.5",
-		"request": "^2.88.2"
-	}
+  "name": "timing-tasks",
+  "version": "0.0.0",
+  "private": "true",
+  "description": "Configuration of timing tasks",
+  "author": {
+    "name": "Palm Civet",
+    "email": "palmcivet_email@qq.com"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemailer": "^6.7.5",
+    "request": "^2.88.2"
+  }
 }

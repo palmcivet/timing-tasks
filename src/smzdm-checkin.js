@@ -6,9 +6,7 @@ const { sendEmail } = require("../util/email");
 
 smzdmApi
   .webCheckIn()
-  .then((res) => {
-    console.log(res);
-  })
+  .then((res) => {})
   .catch((error) => {
     sendEmail({
       taskName: "什么值得买",

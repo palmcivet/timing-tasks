@@ -285,10 +285,6 @@ module.exports = {
           if (error) {
             reject(error);
           } else {
-            let checkin_data = /\((.*)\)/.exec(data);
-            if (checkin_data) {
-              console.log(checkin_data);
-            }
             resolve(data);
           }
         }

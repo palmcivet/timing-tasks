@@ -1,0 +1,7 @@
+SHELL=/bin/sh
+
+0 1 * * * /usr/local/bin/node /root/app/src/bilibili-checkin.js
+2 1 * * * /usr/local/bin/node /root/app/src/juejin-checkin.js
+4 1 * * * /usr/local/bin/node /root/app/src/juejin-mining.js
+6 1 * * * /usr/local/bin/node /root/app/src/music163-checkin.js
+8 1 * * * /usr/local/bin/node /root/app/src/smzdm-checkin.js
