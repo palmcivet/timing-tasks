@@ -25,7 +25,11 @@ function service(options) {
       .then((res) => {
         // 大多数接口返回 { data: {}, code: 0 }
         const data = res.data || {};
-        if (data.err_no === 0 || data.code === 0) {
+        if (
+          data.err_no === 0 ||
+          data.code === 0 ||
+          data.code === 200
+        ) {
           resolve(data.data);
         } else {
           reject(data);

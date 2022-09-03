@@ -45,7 +45,6 @@ async function sendEmail(content) {
     typeof content === "object" ? errorTemplate(content) : content;
 
   try {
-    return
     await transporter.sendMail({
       from: config.EMAIL_SENDER,
       to: config.EMAIL_RECEIVER,
